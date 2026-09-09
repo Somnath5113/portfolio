@@ -1,35 +1,37 @@
 :root {
   /* ══════════════════════════════════════════════
-     Studio-Ghibli palette — "daytime meadow"
-     warm parchment ground, watercolour sky,
-     Totoro-forest greens, sunset amber accents
+     Studio-Ghibli palette — High Contrast & Warm Parchment
+     Ultra-clear readable text, rich forest green,
+     painterly parchment surfaces & sunset amber
      ══════════════════════════════════════════════ */
-  --bg: #fbf3df;
-  --bg-alt: #eef6e0;
-  --surface: #fffdf4;
-  --surface-border: #e6d9b8;
-  --text: #4c4534;
-  --text-dim: #7c7358;
-  --text-h: #2c2618;
-  --accent: #3f9d78;          /* forest / Totoro green */
-  --accent-2: #e78c47;        /* sunset amber */
-  --accent-bg: rgba(63, 157, 120, 0.10);
-  --accent-border: rgba(63, 157, 120, 0.32);
-  --shadow: rgba(76, 62, 30, 0.10) 0 12px 34px -12px, rgba(76, 62, 30, 0.07) 0 3px 10px -3px;
-  --shadow-lg: rgba(76, 62, 30, 0.20) 0 34px 66px -22px;
+  --bg: #f8f1de;
+  --bg-alt: #ebf4df;
+  --surface: rgba(255, 253, 245, 0.94);
+  --surface-solid: #fffdf5;
+  --surface-border: #dfd4b7;
+  --text: #241f17;             /* crisp dark charcoal body text */
+  --text-dim: #443c2c;         /* high contrast readable secondary text */
+  --text-h: #141009;           /* deep bold header contrast */
+  --accent: #277958;           /* rich forest green */
+  --accent-2: #d97026;         /* warm sunset amber */
+  --accent-bg: rgba(39, 121, 88, 0.12);
+  --accent-border: rgba(39, 121, 88, 0.35);
+  --shadow: rgba(60, 48, 24, 0.10) 0 14px 38px -10px, rgba(60, 48, 24, 0.06) 0 4px 12px -3px;
+  --shadow-lg: rgba(60, 48, 24, 0.20) 0 32px 64px -18px;
 
-  /* ── scene colours (used by SceneBackground) ── */
-  --sky-top: #8ecfe6;
-  --sky-mid: #bfe6ea;
-  --sky-low: #f4e9c8;
-  --sun: #fff2c9;
-  --sun-glow: rgba(255, 224, 150, 0.55);
-  --hill-far: #a9d3a0;
-  --hill-mid: #7fc07f;
-  --hill-near: #5aa863;
+  /* ── scene colours ── */
+  --sky-top: #83c6e2;
+  --sky-mid: #b4e0e5;
+  --sky-low: #f2e4bf;
+  --sun: #fff0c2;
+  --sun-glow: rgba(255, 220, 140, 0.55);
+  --hill-far: #a1ce98;
+  --hill-mid: #74ba74;
+  --hill-near: #4ea257;
   --cloud: #fffefb;
   --sprite: #3a3446;
   --star: transparent;
+
 
   /* ── gradients ── */
   --gradient-hero: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 42%, var(--sky-low) 78%, var(--bg) 100%);

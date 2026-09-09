@@ -6,13 +6,16 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import SceneBackground from './components/SceneBackground'
+import OggySceneAnimation from './components/OggySceneAnimation'
 import SkillsShowcase from './components/SkillsShowcase'
 import './App.css'
+import './styles/oggy-ghibli.css'
 
 function App() {
   return (
     <>
       <SceneBackground />
+      <OggySceneAnimation />
       <Navbar />
       <main className="site-main">
         <Hero />
@@ -28,3 +31,4 @@ function App() {
 }
 
 export default App
+

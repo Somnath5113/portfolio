@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import OggyGhibli from './OggyGhibli'
+
 const LINKS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -46,13 +48,14 @@ export default function Navbar() {
       <div className="navbar-inner">
         <a
           href="#home"
-          className="brand"
+          className="brand brand-ghibli"
           onClick={(e) => {
             e.preventDefault()
             handleClick('home')
           }}
         >
-          SM<span className="brand-dot">.</span>
+          <OggyGhibli variant="flying" size={34} className="nav-oggy-mini" />
+          <span>SM<span className="brand-dot">.</span></span>
         </a>
 
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>

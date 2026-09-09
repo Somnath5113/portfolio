@@ -1,0 +1,521 @@
+/* ============================================================
+   oggy-ghibli.css — Oggy & The Cockroaches Studio Ghibli Theme
+   Lush watercolor aesthetics, hand-drawn character floating,
+   playful animations & interactive Ghibli elements
+   ============================================================ */
+
+.oggy-scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* positioned strictly behind foreground content */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Enable pointer events on interactive characters & buttons */
+.oggy-ghibli-container,
+.cockroach-ghibli,
+.ghibli-chase-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── 1. OGGY SKY FLYER (Dandelion Parachute Glider - High Sky Path) ── */
+.oggy-sky-flyer {
+  position: absolute;
+  top: 4vh;
+  left: -160px;
+  animation: oggy-glide 45s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  filter: drop-shadow(0 14px 22px rgba(40, 82, 138, 0.22));
+  will-change: transform, left;
+  transition: animation-duration 0.5s ease;
+}
+
+.oggy-sky-flyer.is-chasing {
+  animation-duration: 22s;
+}
+
+.oggy-ghibli--flying {
+  animation: float-bob 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes oggy-glide {
+  0% {
+    left: -180px;
+    transform: translateY(0) rotate(-4deg);
+  }
+  25% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(4deg);
+  }
+  100% {
+    left: calc(100vw + 180px);
+    transform: translateY(8px) rotate(-2deg);
+  }
+}
+
+@keyframes float-bob {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+  100% { transform: translateY(6px) rotate(-3deg); }
+}
+
+/* ── 2. OGGY BUBBLE FLOATER (Outer Right Sky Margin) ── */
+.oggy-bubble-floater {
+  position: absolute;
+  top: 14vh;
+  right: 2vw;
+  animation: bubble-float 16s ease-in-out infinite alternate, bubble-wobble 7s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(56, 189, 248, 0.3));
+}
+
+@keyframes bubble-float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-25px) translateX(-15px); }
+  100% { transform: translateY(20px) translateX(10px); }
+}
+
+@keyframes bubble-wobble {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  33% { transform: scale(1.05, 0.96) rotate(-4deg); }
+  66% { transform: scale(0.97, 1.04) rotate(4deg); }
+}
+
+/* ── 3. COCKROACHES SKY DRIFTERS (Outer Margins Only) ── */
+.roach-sky-group {
+  position: absolute;
+  inset: 0;
+}
+
+.roach-floater {
+  position: absolute;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.roach-floater:hover {
+  transform: scale(1.25) rotate(-6deg);
+}
+
+/* Joey (Outer Right Sky) */
+.roach-floater--joey {
+  top: 8vh;
+  right: 3vw;
+  animation: joey-drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes joey-drift {
+  0% { transform: translateY(0) translateX(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) translateX(-25px) rotate(8deg); }
+  100% { transform: translateY(15px) translateX(20px) rotate(-8deg); }
+}
+
+/* Dee Dee (Outer Left Sky Margin - High Up) */
+.roach-floater--deedee {
+  top: 10vh;
+  left: 2vw;
+  animation: deedee-drift 32s ease-in-out infinite alternate;
+}
+
+@keyframes deedee-drift {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(25px) translateX(20px) scale(1.05); }
+  100% { transform: translateY(-20px) translateX(-15px) scale(0.95); }
+}
+
+/* Marky (Far Right Sky Margin) */
+.roach-floater--marky {
+  top: 18vh;
+  right: 1.5vw;
+  animation: marky-drift 36s ease-in-out infinite alternate;
+}
+
+@keyframes marky-drift {
+  0% { transform: translateY(0) rotate(5deg); }
+  50% { transform: translateY(-50px) rotate(-10deg); }
+  100% { transform: translateY(30px) rotate(8deg); }
+}
+
+/* ── 4. GHIBLI SPEECH BUBBLES ── */
+.ghibli-speech-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: var(--surface, #fffdf4);
+  color: var(--text-h, #2c2618);
+  border: 2px solid var(--accent, #3f9d78);
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-family: var(--display, 'Baloo 2', sans-serif);
+  font-weight: 700;
+  font-size: 13.5px;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: bubble-pop 0.35s var(--ease-spring) forwards;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ghibli-speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 7px 0 7px;
+  border-style: solid;
+  border-color: var(--accent, #3f9d78) transparent transparent transparent;
+}
+
+@keyframes bubble-pop {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.7); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1); }
+}
+
+/* ── 5. GHIBLI CHASE PARADE (MEADOW HILLS) ── */
+.ghibli-chase-parade {
+  position: absolute;
+  bottom: 6vh;
+  left: -400px;
+  width: 380px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.ghibli-chase-parade.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  animation: chase-parade-run 14s linear infinite;
+}
+
+@keyframes chase-parade-run {
+  0% { left: -400px; }
+  100% { left: calc(100vw + 200px); }
+}
+
+.chase-runner {
+  animation: runner-bounce 0.4s ease-in-out infinite alternate;
+}
+
+.roach-runner-marky { animation-delay: 0.0s; }
+.roach-runner-deedee { animation-delay: 0.1s; }
+.roach-runner-joey { animation-delay: 0.2s; }
+.oggy-runner { animation-delay: 0.15s; margin-left: 20px; }
+
+@keyframes runner-bounce {
+  0% { transform: translateY(0) rotate(-4deg); }
+  100% { transform: translateY(-14px) rotate(4deg); }
+}
+
+/* ── 6. DANDELION SEEDS DRIFTING ── */
+.ghibli-dandelions {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dandelion-fluff {
+  position: absolute;
+  bottom: -30px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 40%, rgba(254, 240, 138, 0.8) 80%, transparent 100%);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation: dandelion-rise linear infinite;
+}
+
+@keyframes dandelion-rise {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.7; }
+  100% {
+    transform: translateY(-110vh) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ── 7. SPARKLE BURST EFFECT ── */
+.ghibli-sparkle-burst {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 99;
+}
+
+.ghibli-sparkle-burst span {
+  position: absolute;
+  font-size: 20px;
+  animation: sparkle-fly 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.ghibli-sparkle-burst span:nth-child(1) { --dx: -35px; --dy: -40px; }
+.ghibli-sparkle-burst span:nth-child(2) { --dx: 38px; --dy: -30px; }
+.ghibli-sparkle-burst span:nth-child(3) { --dx: -25px; --dy: 35px; }
+.ghibli-sparkle-burst span:nth-child(4) { --dx: 40px; --dy: 30px; }
+.ghibli-sparkle-burst span:nth-child(5) { --dx: 0px; --dy: -55px; }
+
+@keyframes sparkle-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(180deg);
+  }
+}
+
+/* ── 8. GHIBLI CONTROL BADGE (BOTTOM CORNER) ── */
+.ghibli-control-badge {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.ghibli-chase-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(255, 253, 244, 0.92), rgba(254, 243, 199, 0.95));
+  color: #2c2618;
+  border: 2px solid var(--accent, #3f9d78);
+  border-radius: 999px;
+  font-family: var(--display, 'Baloo 2', sans-serif);
+  font-weight: 800;
+  font-size: 14.5px;
+  box-shadow: 0 10px 28px rgba(63, 157, 120, 0.25), inset 0 1px 0 #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ghibli-chase-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: var(--accent-2, #e78c47);
+  box-shadow: 0 14px 34px rgba(231, 140, 71, 0.35);
+}
+
+.ghibli-chase-btn .btn-icon {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .oggy-sky-flyer { top: 18vh; scale: 0.8; }
+  .oggy-bubble-floater { display: none; }
+  .roach-floater--joey { right: 8vw; scale: 0.85; }
+  .roach-floater--deedee { left: 4vw; scale: 0.85; }
+  .roach-floater--marky { display: none; }
+  .ghibli-control-badge { bottom: 16px; right: 16px; }
+  .ghibli-chase-btn { padding: 10px 15px; font-size: 13px; }
+}
+
+/* ── 9. HERO GHIBLI BADGE & MASCOT DISPLAY ── */
+.hero-ghibli-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 12px 28px 14px;
+  background: color-mix(in srgb, var(--surface, #fffdf4) 85%, transparent);
+  border: 2px solid var(--accent-border, rgba(63, 157, 120, 0.32));
+  border-radius: var(--radius, 26px);
+  box-shadow: 0 14px 35px rgba(63, 157, 120, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s ease;
+}
+
+.hero-ghibli-badge:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 42px rgba(63, 157, 120, 0.25);
+  border-color: var(--accent-2, #e78c47);
+}
+
+.ghibli-mascot-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-oggy {
+  animation: hero-oggy-hover 3.8s ease-in-out infinite alternate;
+}
+
+.hero-roaches {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-roaches > div {
+  animation: hero-roach-bob 3s ease-in-out infinite alternate;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.hero-roaches > div:nth-child(1) { animation-delay: 0.2s; }
+.hero-roaches > div:nth-child(2) { animation-delay: 0.5s; }
+.hero-roaches > div:nth-child(3) { animation-delay: 0.8s; }
+
+.hero-roaches > div:hover {
+  transform: scale(1.3) rotate(-10deg);
+}
+
+.hero-ghibli-badge .badge-text {
+  font-family: var(--display, 'Baloo 2', sans-serif);
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  color: var(--accent, #3f9d78);
+  text-transform: uppercase;
+}
+
+@keyframes hero-oggy-hover {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-8px) rotate(4deg); }
+}
+
+@keyframes hero-roach-bob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+@media (max-width: 768px) {
+  .hero-ghibli-badge {
+    padding: 8px 18px 10px;
+    margin-bottom: 16px;
+  }
+  .hero-oggy { scale: 0.8; }
+  .hero-ghibli-badge .badge-text { font-size: 11px; }
+}
+
+/* ── 10. NAVBAR GHIBLI BRAND ── */
+.brand-ghibli {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-oggy-mini {
+  filter: drop-shadow(0 4px 8px rgba(63, 157, 120, 0.25));
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.brand-ghibli:hover .nav-oggy-mini {
+  transform: scale(1.25) rotate(12deg);
+}
+
+/* ── 11. OGGY GHIBLI HOUSE & LANDSCAPE BACKGROUND ── */
+.scene-hills-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 46vh;
+  min-height: 320px;
+}
+
+.scene-oggy-house-container {
+  position: absolute;
+  bottom: 30px;
+  right: 12vw;
+  width: clamp(200px, 24vw, 340px);
+  z-index: 2;
+  filter: drop-shadow(0 12px 28px rgba(30, 41, 59, 0.2));
+  transform: translateY(var(--p-mid));
+}
+
+.scene-bob-container {
+  position: absolute;
+  bottom: 20px;
+  left: 8vw;
+  width: clamp(100px, 12vw, 150px);
+  z-index: 2;
+  transform: translateY(var(--p-near));
+}
+
+/* Jack Leaf Plane Drifting in High Sky */
+.scene-jack-sky {
+  position: absolute;
+  top: 8vh;
+  left: -150px;
+  z-index: 1;
+  animation: jack-fly-sky 38s linear infinite;
+  filter: drop-shadow(0 8px 16px rgba(15, 23, 42, 0.2));
+}
+
+@keyframes jack-fly-sky {
+  0% {
+    left: -160px;
+    transform: translateY(0) rotate(2deg);
+  }
+  50% {
+    transform: translateY(35px) rotate(-4deg);
+  }
+  100% {
+    left: calc(100vw + 160px);
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.jack-propeller {
+  transform-origin: center;
+  animation: propeller-spin 0.15s linear infinite;
+}
+
+@keyframes propeller-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Chimney Smoke Puffs */
+.smoke-puff {
+  transform-origin: center;
+  animation: smoke-float 3.5s ease-out infinite;
+}
+
+.puff-1 { animation-delay: 0s; }
+.puff-2 { animation-delay: 1.1s; }
+.puff-3 { animation-delay: 2.2s; }
+
+@keyframes smoke-float {
+  0% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+  100% { transform: translateY(-30px) scale(1.6); opacity: 0; }
+}
+
+/* Bob Bulldog Zzz Animation */
+.bob-zzz text {
+  animation: zzz-float 3s ease-in-out infinite;
+}
+.bob-zzz text:nth-child(1) { animation-delay: 0s; }
+.bob-zzz text:nth-child(2) { animation-delay: 0.8s; }
+.bob-zzz text:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes zzz-float {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
+}
+
+
+
