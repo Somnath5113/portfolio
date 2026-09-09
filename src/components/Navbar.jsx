@@ -71,8 +71,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a className="btn btn-ghost resume-link" href="/resume.pdf" target="_blank" rel="noreferrer">
-          Resume
+        <a className="btn btn-ghost resume-link" href="/resume.html" target="_blank" rel="noreferrer">
+          Résumé
         </a>
 
         <button

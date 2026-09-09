@@ -1,0 +1,192 @@
+/* ============================================================
+   scene.css — Ghibli storybook atmosphere
+   fixed painterly backdrop + hand-drawn motion layered
+   behind the whole site
+   ============================================================ */
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --p-far: 0px;
+  --p-mid: 0px;
+  --p-near: 0px;
+  --p-sky: 0px;
+}
+
+/* watercolour sky wash */
+.scene-sky {
+  position: absolute;
+  inset: -10% 0 0;
+  background: var(--gradient-hero);
+  transform: translateY(var(--p-sky));
+  transition: background 0.6s ease;
+}
+
+/* grain / paper texture over everything */
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* ── sun / moon ── */
+.scene-sun {
+  position: absolute;
+  top: 12vh;
+  right: 14vw;
+  width: clamp(90px, 12vw, 160px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #fff, var(--sun) 60%, transparent 72%);
+  animation: sun-bob 14s ease-in-out infinite;
+}
+
+.scene-sun-glow {
+  position: absolute;
+  inset: -70%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sun-glow), transparent 62%);
+  animation: sun-pulse 7s ease-in-out infinite;
+}
+
+@keyframes sun-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(14px); }
+}
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+/* ── stars (night only) ── */
+.scene-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, var(--star), transparent),
+    radial-gradient(1.6px 1.6px at 28% 42%, var(--star), transparent),
+    radial-gradient(1.2px 1.2px at 44% 12%, var(--star), transparent),
+    radial-gradient(1.8px 1.8px at 62% 30%, var(--star), transparent),
+    radial-gradient(1.3px 1.3px at 78% 16%, var(--star), transparent),
+    radial-gradient(1.5px 1.5px at 88% 44%, var(--star), transparent),
+    radial-gradient(1.2px 1.2px at 8% 62%, var(--star), transparent),
+    radial-gradient(1.7px 1.7px at 36% 72%, var(--star), transparent),
+    radial-gradient(1.3px 1.3px at 70% 66%, var(--star), transparent);
+  background-repeat: no-repeat;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scene-stars { opacity: 1; }
+}
+
+/* ── clouds ── */
+.scene-clouds {
+  position: absolute;
+  inset: 0;
+}
+
+.scene-cloud {
+  position: absolute;
+  width: clamp(160px, 22vw, 320px);
+  height: auto;
+  opacity: 0.92;
+  filter: drop-shadow(0 14px 18px rgba(70, 90, 120, 0.10));
+  will-change: transform;
+}
+
+.scene-cloud--1 { top: 10vh; animation: drift-r 66s linear infinite; }
+.scene-cloud--2 { top: 22vh; transform: scale(0.7); opacity: 0.75; animation: drift-r 96s linear infinite; animation-delay: -30s; }
+.scene-cloud--3 { top: 38vh; transform: scale(1.15); opacity: 0.55; animation: drift-l 120s linear infinite; }
+.scene-cloud--4 { top: 6vh; transform: scale(0.5); opacity: 0.6; animation: drift-l 80s linear infinite; animation-delay: -50s; }
+
+@keyframes drift-r {
+  from { left: -30%; }
+  to { left: 115%; }
+}
+@keyframes drift-l {
+  from { left: 115%; }
+  to { left: -35%; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scene-cloud { opacity: 0.18 !important; }
+}
+
+/* ── hills ── */
+.scene-hills {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 46vh;
+  min-height: 320px;
+}
+
+.scene-hill--far { transform: translateY(var(--p-far)); opacity: 0.85; }
+.scene-hill--mid { transform: translateY(var(--p-mid)); opacity: 0.92; }
+.scene-hill--near { transform: translateY(var(--p-near)); }
+
+/* ── soot sprites ── */
+.scene-sprites {
+  position: absolute;
+  inset: 0;
+}
+
+.soot {
+  position: absolute;
+  bottom: -40px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--sprite);
+  opacity: 0;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--sprite) 45%, transparent),
+    3px -3px 0 -1px var(--sprite),
+    -3px -3px 0 -1px var(--sprite),
+    4px 2px 0 -2px var(--sprite),
+    -4px 2px 0 -2px var(--sprite);
+  animation-name: soot-rise;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes soot-rise {
+  0% { transform: translateY(0) translateX(0) scale(0.6); opacity: 0; }
+  10% { opacity: 0.5; }
+  50% { transform: translateY(-52vh) translateX(28px) scale(1); opacity: 0.55; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-104vh) translateX(-18px) scale(0.7); opacity: 0; }
+}
+
+/* ── keep site content above the scene ── */
+.site-main,
+.navbar {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-cloud,
+  .scene-sun,
+  .scene-sun-glow,
+  .scene-stars,
+  .soot {
+    animation: none !important;
+  }
+  .soot { display: none; }
+}

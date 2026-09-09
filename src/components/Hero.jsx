@@ -3,25 +3,26 @@ import { profile } from '../data/resume'
 export default function Hero() {
   return (
     <section id="home" className="hero-section">
-      {/* animated gradient mesh orbs */}
+      {/* soft light blooms */}
       <div className="hero-mesh-orb hero-mesh-orb--a" aria-hidden="true" />
       <div className="hero-mesh-orb hero-mesh-orb--b" aria-hidden="true" />
-      <div className="hero-mesh-orb hero-mesh-orb--c" aria-hidden="true" />
 
-      {/* dot-grid texture */}
-      <svg className="hero-dot-grid" aria-hidden="true" width="100%" height="100%">
-        <defs>
-          <pattern id="dot-pattern" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-            <circle cx="1.5" cy="1.5" r="1" fill="currentColor" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dot-pattern)" />
-      </svg>
+      {/* drifting leaves */}
+      <div className="hero-leaves" aria-hidden="true">
+        {Array.from({ length: 7 }).map((_, i) => (
+          <span key={i} className="hero-leaf" style={{ '--i': i }} />
+        ))}
+      </div>
 
       <div className="container hero-content">
-        <p className="eyebrow hero-anim" style={{ animationDelay: '0ms' }}>Hi, I'm</p>
+        <p className="eyebrow hero-anim" style={{ animationDelay: '0ms' }}>
+          Once upon a build…
+        </p>
         <h1 className="hero-name hero-anim" style={{ animationDelay: '100ms' }}>
           {profile.name}
+          <svg className="hero-name-underline" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2 8C60 3 120 3 150 6s90 4 148-2" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          </svg>
         </h1>
         <h2 className="hero-role hero-anim" style={{ animationDelay: '200ms' }}>
           {profile.role}
@@ -39,10 +40,10 @@ export default function Hero() {
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            View Projects
+            Begin the story
           </a>
-          <a className="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noreferrer">
-            Download Resume
+          <a className="btn btn-ghost" href="/resume.html" target="_blank" rel="noreferrer">
+            Résumé
           </a>
         </div>
       </div>
