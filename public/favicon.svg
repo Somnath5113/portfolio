@@ -1,10 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#c084fc"/>
-      <stop offset="100%" stop-color="#7e14ff"/>
-    </linearGradient>
+    <radialGradient id="oggyFavBg" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="70%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </radialGradient>
+    <radialGradient id="oggyFavNose" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </radialGradient>
   </defs>
-  <rect width="48" height="48" rx="12" fill="url(#g)"/>
-  <text x="24" y="31" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">SM</text>
+
+  {/* Round Favicon Background */}
+  <circle cx="32" cy="32" r="30" fill="url(#oggyFavBg)" stroke="#1e40af" stroke-width="2"/>
+
+  {/* Oggy Ears */}
+  <path d="M 16 22 Q 8 6 22 12 Z" fill="url(#oggyFavBg)"/>
+  <path d="M 17 20 Q 11 9 20 13 Z" fill="#f472b6"/>
+  
+  <path d="M 48 22 Q 56 6 42 12 Z" fill="url(#oggyFavBg)"/>
+  <path d="M 47 20 Q 53 9 44 13 Z" fill="#f472b6"/>
+
+  {/* Oggy Head */}
+  <ellipse cx="32" cy="34" rx="20" ry="17" fill="url(#oggyFavBg)"/>
+
+  {/* Fluffy White Muzzle */}
+  <ellipse cx="25" cy="39" rx="8" ry="6" fill="#ffffff"/>
+  <ellipse cx="39" cy="39" rx="8" ry="6" fill="#ffffff"/>
+
+  {/* Iconic Green Eyes */}
+  <ellipse cx="23" cy="28" rx="5" ry="6.5" fill="#ffffff"/>
+  <ellipse cx="23" cy="28.5" rx="3.5" ry="4.5" fill="#22c55e"/>
+  <circle cx="23" cy="28.5" r="2" fill="#0f172a"/>
+  <circle cx="21.5" cy="26.5" r="1" fill="#ffffff"/>
+
+  <ellipse cx="41" cy="28" rx="5" ry="6.5" fill="#ffffff"/>
+  <ellipse cx="41" cy="28.5" rx="3.5" ry="4.5" fill="#22c55e"/>
+  <circle cx="41" cy="28.5" r="2" fill="#0f172a"/>
+  <circle cx="42.5" cy="26.5" r="1" fill="#ffffff"/>
+
+  {/* Iconic Big Red Nose */}
+  <circle cx="32" cy="35" r="5.5" fill="url(#oggyFavNose)"/>
+  <circle cx="30" cy="33.5" r="1.8" fill="#ffffff" opacity="0.9"/>
+
+  {/* Smile */}
+  <path d="M 28 42 Q 32 45 36 42" stroke="#1e3a8a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  {/* Whiskers */}
+  <path d="M 16 38 L 6 36" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 16 41 L 7 43" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 48 38 L 58 36" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 48 41 L 57 43" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
 </svg>

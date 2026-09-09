@@ -4,7 +4,7 @@ import React from 'react'
  * OggyGhibli - Vector Studio Ghibli styled Oggy the Cat
  * Props:
  *  - variant: 'flying' | 'sitting' | 'bubble' | 'sleeping'
- *  - size: number (default 120)
+ *  - size: number (default 140)
  *  - className: string
  */
 export default function OggyGhibli({ variant = 'flying', size = 140, className = '', onClick }) {
@@ -158,13 +158,13 @@ export default function OggyGhibli({ variant = 'flying', size = 140, className =
           <circle cx="100" cy="82" r="11" fill="url(#oggyNoseGrad)" />
           <circle cx="96" cy="78" r="3.5" fill="#ffffff" opacity="0.85" />
 
-          {/* Ghibli Expressive Eyes */}
+          {/* Ghibli Expressive Eyes — Oggy Iconic Emerald Green */}
           {/* Left Eye */}
           <g className="oggy-eye">
             <ellipse cx="80" cy="66" rx="11" ry="14" fill="#ffffff" stroke="#28528a" strokeWidth="1.5" />
-            {/* Iris */}
-            <ellipse cx="82" cy="67" rx="7" ry="9" fill="#1e293b" />
-            <ellipse cx="82" cy="67" rx="5" ry="7" fill="#0f172a" />
+            {/* Iris - Iconic Oggy Green */}
+            <ellipse cx="82" cy="67" rx="7.5" ry="9.5" fill="#22c55e" />
+            <ellipse cx="82" cy="67" rx="4.5" ry="6.5" fill="#0f172a" />
             {/* Ghibli Starry Highlights */}
             <circle cx="79" cy="63" r="3" fill="#ffffff" />
             <circle cx="84" cy="71" r="1.5" fill="#ffffff" />
@@ -173,9 +173,9 @@ export default function OggyGhibli({ variant = 'flying', size = 140, className =
           {/* Right Eye */}
           <g className="oggy-eye">
             <ellipse cx="120" cy="66" rx="11" ry="14" fill="#ffffff" stroke="#28528a" strokeWidth="1.5" />
-            {/* Iris */}
-            <ellipse cx="118" cy="67" rx="7" ry="9" fill="#1e293b" />
-            <ellipse cx="118" cy="67" rx="5" ry="7" fill="#0f172a" />
+            {/* Iris - Iconic Oggy Green */}
+            <ellipse cx="118" cy="67" rx="7.5" ry="9.5" fill="#22c55e" />
+            <ellipse cx="118" cy="67" rx="4.5" ry="6.5" fill="#0f172a" />
             {/* Ghibli Starry Highlights */}
             <circle cx="115" cy="63" r="3" fill="#ffffff" />
             <circle cx="120" cy="71" r="1.5" fill="#ffffff" />
