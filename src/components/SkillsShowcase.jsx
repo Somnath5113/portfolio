@@ -184,11 +184,20 @@ function ParticleField() {
     resize()
     window.addEventListener('resize', resize)
 
-    const handleMouse = (e) => {
+    const handlePointer = (e) => {
       const rect = canvas.getBoundingClientRect()
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top }
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY
+      mouseRef.current = { x: clientX - rect.left, y: clientY - rect.top }
     }
-    canvas.addEventListener('mousemove', handleMouse)
+    const handleTouchEnd = () => {
+      mouseRef.current = { x: -1000, y: -1000 }
+    }
+
+    canvas.addEventListener('mousemove', handlePointer)
+    canvas.addEventListener('touchmove', handlePointer, { passive: true })
+    canvas.addEventListener('touchstart', handlePointer, { passive: true })
+    canvas.addEventListener('touchend', handleTouchEnd, { passive: true })
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
@@ -204,7 +213,7 @@ function ParticleField() {
         if (p.x < 0 || p.x > width) p.vx *= -1
         if (p.y < 0 || p.y > height) p.vy *= -1
 
-        // Mouse repulsion
+        // Mouse/touch repulsion
         const dx = p.x - mouse.x
         const dy = p.y - mouse.y
         const dist = Math.sqrt(dx * dx + dy * dy)
@@ -243,7 +252,10 @@ function ParticleField() {
     return () => {
       cancelAnimationFrame(animationRef.current)
       window.removeEventListener('resize', resize)
-      canvas.removeEventListener('mousemove', handleMouse)
+      canvas.removeEventListener('mousemove', handlePointer)
+      canvas.removeEventListener('touchmove', handlePointer)
+      canvas.removeEventListener('touchstart', handlePointer)
+      canvas.removeEventListener('touchend', handleTouchEnd)
     }
   }, [initParticles])
 

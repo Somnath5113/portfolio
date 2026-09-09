@@ -602,13 +602,83 @@
 }
 
 @media (max-width: 768px) {
-  .oggy-sky-flyer, .tom-sky-flyer { top: 16vh; scale: 0.75; }
-  .jerry-sky-glider { top: 24vh; scale: 0.75; }
+  .oggy-sky-flyer { top: 4vh; transform-origin: top left; scale: 0.7; }
+  .tom-sky-flyer { top: 12vh; transform-origin: top left; scale: 0.7; }
+  .jerry-sky-glider { top: 20vh; transform-origin: top left; scale: 0.7; }
   .oggy-bubble-floater, .tom-bubble-floater, .jerry-bubble-floater { display: none; }
-  .roach-floater--joey { right: 8vw; scale: 0.8; }
-  .roach-floater--deedee { left: 4vw; scale: 0.8; }
+  .roach-floater--joey { top: 6vh; right: 4vw; scale: 0.75; }
+  .roach-floater--deedee { top: 10vh; left: 2vw; scale: 0.75; }
   .roach-floater--marky { display: none; }
-  .ghibli-control-badge { bottom: 16px; right: 16px; }
-  .ghibli-chase-btn { padding: 10px 15px; font-size: 13px; }
-  .scene-tom-jerry-cottage-container { display: none; }
+  .ghibli-control-badge {
+    bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    right: 14px;
+    z-index: 99;
+  }
+  .ghibli-chase-btn {
+    padding: 8px 14px;
+    font-size: 12.5px;
+    gap: 6px;
+    box-shadow: 0 6px 20px rgba(63, 157, 120, 0.2);
+  }
+  .ghibli-chase-btn .btn-icon { font-size: 15px; }
+  .scene-tom-jerry-cottage-container {
+    width: 120px;
+    left: 3vw;
+    bottom: 20px;
+  }
+  .scene-oggy-house-container {
+    width: 130px;
+    right: 3vw;
+    bottom: 22px;
+  }
+  .scene-bob-container {
+    width: 70px;
+    left: 2vw;
+    bottom: 15px;
+  }
+  .ghibli-speech-bubble {
+    max-width: min(250px, 80vw);
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
+
+@media (max-width: 600px) {
+  .hero-ghibli-badge {
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    max-width: calc(100vw - 32px);
+    width: 100%;
+  }
+  .ghibli-mascot-group {
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-jerry svg { width: 38px !important; height: auto !important; }
+  .hero-tom svg { width: 48px !important; height: auto !important; }
+  .hero-oggy svg { width: 52px !important; height: auto !important; }
+  .hero-roaches > div svg { width: 26px !important; height: auto !important; }
+  .hero-ghibli-badge .badge-text {
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .ghibli-chase-parade {
+    scale: 0.65;
+    bottom: 4vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .oggy-sky-flyer { top: 2vh; scale: 0.6; }
+  .tom-sky-flyer { top: 10vh; scale: 0.6; }
+  .jerry-sky-glider { top: 18vh; scale: 0.6; }
+  .ghibli-chase-btn span:not(.btn-icon) {
+    font-size: 11.5px;
+  }
+}
+

@@ -38,6 +38,26 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  // Close menu on click outside or keydown ESC & lock scroll when menu open
+  useEffect(() => {
+    if (!open) {
+      document.body.style.overflow = ''
+      return undefined
+    }
+
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
   const handleClick = (id) => {
     setOpen(false)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -59,7 +79,16 @@ export default function Navbar() {
           <span>SM<span className="brand-dot">.</span></span>
         </a>
 
-        <nav className={`nav-links ${open ? 'is-open' : ''}`}>
+        {/* Mobile menu backdrop */}
+        {open && (
+          <div
+            className="nav-backdrop"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        <nav id="mobile-menu" className={`nav-links ${open ? 'is-open' : ''}`}>
           {LINKS.map((link) => (
             <a
               key={link.id}
@@ -77,7 +106,9 @@ export default function Navbar() {
 
         <button
           className={`nav-toggle ${open ? 'is-open' : ''}`}
-          aria-label="Toggle navigation menu"
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
           <span />
