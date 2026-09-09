@@ -1,11 +1,16 @@
 import { useEffect, useRef } from 'react'
 
-export function useReveal(options = {}) {
+export function useReveal(variant = 'fade-up', options = {}) {
   const ref = useRef(null)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return undefined
+
+    // Apply the variant class
+    if (variant && !el.classList.contains(`reveal--${variant}`)) {
+      el.classList.add(`reveal--${variant}`)
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -19,7 +24,7 @@ export function useReveal(options = {}) {
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [options])
+  }, [variant, options])
 
   return ref
 }

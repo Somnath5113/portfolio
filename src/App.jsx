@@ -5,7 +5,7 @@ import Experience from './components/Experience'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
-import Skills from './components/Skills'
+import SkillsShowcase from './components/SkillsShowcase'
 import './App.css'
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <About />
         <Experience />
         <Projects />
-        <Skills />
+        <SkillsShowcase />
         <Beyond />
         <Contact />
       </main>

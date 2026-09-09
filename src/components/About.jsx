@@ -13,7 +13,7 @@ export default function About() {
         />
 
         <div className="about-grid">
-          <Reveal className="about-bio" delay={100}>
+          <Reveal className="about-bio" variant="slide-right" delay={100}>
             {bio.map((para) => (
               <p key={para.slice(0, 24)}>{para}</p>
             ))}
@@ -21,7 +21,7 @@ export default function About() {
 
           <div className="timeline">
             {journey.map((step, i) => (
-              <Reveal as="div" className="timeline-item" delay={150 + i * 100} key={step.year}>
+              <Reveal as="div" className="timeline-item" variant="slide-left" delay={150 + i * 100} key={step.year}>
                 <div className="timeline-marker" />
                 <div className="timeline-body">
                   <span className="timeline-year">{step.year}</span>

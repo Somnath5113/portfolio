@@ -13,13 +13,6 @@ export const bio = [
   "Outside coursework, I've spent four internships shipping things that actually run in production: a pricing engine live at 250+ hotels, a traffic-camera pipeline that sees through fog, a chatbot reading medical call transcripts, and a robot arm learning to pick tomatoes. I like the version of AI that has to survive contact with real data.",
 ]
 
-export const stats = [
-  { value: '4', label: 'internships across CV, NLP & data' },
-  { value: '250+', label: 'hotels served by a pricing engine I built' },
-  { value: '99.9%', label: 'uptime on a system I own end-to-end' },
-  { value: '41%', label: 'fewer hallucinations in my RAG pipeline' },
-]
-
 export const journey = [
   {
     year: '2027',
@@ -108,18 +101,110 @@ export const projects = [
   },
 ]
 
-export const skills = {
-  Languages: ['Python', 'C++', 'C', 'SQL', 'HTML'],
-  'ML & Vision': [
-    'PyTorch',
-    'TensorFlow / Keras',
-    'Scikit-learn',
-    'OpenCV',
-    'Transformers',
-  ],
-  'Agents & LLMs': ['LangChain', 'LangGraph', 'FastAPI', 'RAG / FAISS', 'LiteLLM'],
-  'Infra & Tools': ['Docker', 'Linux', 'NGINX', 'MongoDB', 'Redis', 'Git'],
-}
+export const skillsData = [
+  {
+    id: 'languages',
+    title: 'Languages & Core',
+    tagline: 'The foundations everything else is built on',
+    icon: 'code',
+    skills: [
+      { name: 'Python', level: 95, context: 'Primary language across all 4 internships — FastAPI, PyTorch, data pipelines', category: 'primary' },
+      { name: 'C++', level: 78, context: 'TensorRT inference optimization — up to 3.9× speedup on CUDA', category: 'systems' },
+      { name: 'C', level: 70, context: 'Embedded systems coursework, memory-level robotics control', category: 'systems' },
+      { name: 'SQL', level: 82, context: 'Complex analytical queries for OYO pricing engine across 250+ hotels', category: 'data' },
+      { name: 'HTML/CSS/JS', level: 65, context: 'Panel dashboards, FastAPI frontends, this portfolio', category: 'web' },
+    ],
+  },
+  {
+    id: 'ml',
+    title: 'ML & Deep Learning',
+    tagline: 'Training models that survive contact with real data',
+    icon: 'brain',
+    skills: [
+      { name: 'PyTorch', level: 92, context: 'Fog/rain removal pipeline at 30fps, image captioning transformers', category: 'framework' },
+      { name: 'TensorFlow', level: 75, context: 'Keras prototyping, TFLite edge deployment experiments', category: 'framework' },
+      { name: 'Scikit-learn', level: 85, context: 'Feature engineering, XGBoost ensembles for pricing prediction', category: 'classical' },
+      { name: 'Transformers (HF)', level: 88, context: 'Fine-tuned Wav2Vec2 for accent classification — 94.2% accuracy', category: 'nlp' },
+      { name: 'TensorRT / CUDA', level: 80, context: 'C++ inference — 3.9× faster YOLO on robotic arm pipeline', category: 'optimization' },
+    ],
+  },
+  {
+    id: 'cv',
+    title: 'Computer Vision',
+    tagline: 'Making machines see through fog, rain, and darkness',
+    icon: 'eye',
+    skills: [
+      { name: 'OpenCV', level: 90, context: 'Real-time video dehazing, RTMP stream processing at 30+ fps', category: 'core' },
+      { name: 'YOLOv8', level: 88, context: '91.5% mAP on custom tomato dataset, 10K+ license plates logged', category: 'detection' },
+      { name: 'DETR', level: 72, context: 'Benchmarked against YOLO on COCO — 42.0% vs 53.9% mAP analysis', category: 'detection' },
+      { name: 'PaddleOCR', level: 78, context: 'Automated plate reading from cleaned fog-free traffic footage', category: 'ocr' },
+      { name: 'Grad-CAM', level: 75, context: 'Explainability layer on image captioning — shows where the model looks', category: 'explainability' },
+    ],
+  },
+  {
+    id: 'agents',
+    title: 'LLMs & Agents',
+    tagline: 'Multi-agent pipelines that argue before they answer',
+    icon: 'robot',
+    skills: [
+      { name: 'LangGraph', level: 90, context: '4-agent research system with ReAct + Reflexion — 41% fewer hallucinations', category: 'orchestration' },
+      { name: 'LangChain', level: 85, context: 'RAG pipelines with FAISS dense search + BM25 hybrid retrieval', category: 'orchestration' },
+      { name: 'RAG / FAISS', level: 88, context: '0.91 context recall on RAGAS, HyDE reranking, session memory with Redis', category: 'retrieval' },
+      { name: 'LiteLLM', level: 75, context: 'Unified API gateway across OpenAI, Anthropic, and open-source models', category: 'inference' },
+      { name: 'LLaMA', level: 80, context: 'Fine-tuned for medical call transcript processing at Brix AI', category: 'models' },
+    ],
+  },
+  {
+    id: 'data',
+    title: 'Data Engineering',
+    tagline: 'Pipelines that clean, store, and serve — reliably',
+    icon: 'database',
+    skills: [
+      { name: 'MongoDB', level: 82, context: 'Structured real-time US healthcare call data, sped up processing 40%', category: 'storage' },
+      { name: 'Redis', level: 78, context: 'Session memory for multi-agent research system, caching layer', category: 'cache' },
+      { name: 'FastAPI', level: 92, context: 'Production APIs at OYO (pricing), Brix AI (chatbot), captioning service', category: 'api' },
+      { name: 'Pandas / NumPy', level: 88, context: 'ETL pipelines, feature engineering, A/B test analysis', category: 'processing' },
+      { name: 'RAGAS / LangSmith', level: 76, context: 'End-to-end LLM evaluation — traced every run through Grafana dashboards', category: 'evaluation' },
+    ],
+  },
+  {
+    id: 'infra',
+    title: 'Infrastructure & DevOps',
+    tagline: 'Shipping it is half the job — keeping it up is the other half',
+    icon: 'cloud',
+    skills: [
+      { name: 'Docker', level: 85, context: 'Containerized every production service — pricing engine, chatbot, CV pipeline', category: 'container' },
+      { name: 'AWS EC2', level: 80, context: 'GPU instances for real-time video processing, auto-scaling configs', category: 'cloud' },
+      { name: 'NGINX / RTMP', level: 82, context: 'Custom streaming server replacing AWS MediaLive — 8s latency', category: 'networking' },
+      { name: 'Kubernetes', level: 70, context: 'Orchestration for OYO microservices deployment', category: 'orchestration' },
+      { name: 'Git / Linux', level: 88, context: 'Daily driver — CI/CD workflows, shell scripting, server admin', category: 'core' },
+    ],
+  },
+]
+
+// Skill connections showing how skills chain across real projects
+export const skillConnections = [
+  {
+    label: 'Traffic Vision Pipeline',
+    path: ['PyTorch', 'OpenCV', 'YOLOv8', 'PaddleOCR', 'NGINX / RTMP', 'AWS EC2'],
+    color: '#7c3aed',
+  },
+  {
+    label: 'Multi-Agent Research System',
+    path: ['LangGraph', 'RAG / FAISS', 'Redis', 'FastAPI', 'LangChain'],
+    color: '#38bdf8',
+  },
+  {
+    label: 'OYO Pricing Engine',
+    path: ['Python', 'FastAPI', 'SQL', 'Docker', 'Kubernetes', 'LangGraph'],
+    color: '#f472b6',
+  },
+  {
+    label: 'Robotic Tomato Picking',
+    path: ['YOLOv8', 'TensorRT / CUDA', 'C++', 'PyTorch', 'OpenCV'],
+    color: '#34d399',
+  },
+]
 
 export const beyondWork = [
   {

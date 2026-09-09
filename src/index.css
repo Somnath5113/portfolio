@@ -1,25 +1,44 @@
 :root {
-  --bg: #fbfaff;
-  --bg-alt: #f3f0fb;
+  /* ── colour palette (light) ── */
+  --bg: #f8f6ff;
+  --bg-alt: #efe9fb;
   --surface: #ffffff;
-  --surface-border: #e7e3f3;
+  --surface-border: #e2ddf0;
   --text: #4b4759;
   --text-dim: #6f6a80;
   --text-h: #16121f;
-  --accent: #7e14ff;
-  --accent-2: #2fb8e6;
-  --accent-bg: rgba(126, 20, 255, 0.08);
-  --accent-border: rgba(126, 20, 255, 0.35);
+  --accent: #7c3aed;
+  --accent-2: #38bdf8;
+  --accent-bg: rgba(124, 58, 237, 0.08);
+  --accent-border: rgba(124, 58, 237, 0.30);
   --shadow: rgba(23, 15, 46, 0.08) 0 10px 30px -10px, rgba(23, 15, 46, 0.06) 0 2px 8px -2px;
   --shadow-lg: rgba(23, 15, 46, 0.18) 0 30px 60px -20px;
 
-  --sans: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
-  --mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
-  --container: 1180px;
-  --radius: 18px;
-  --radius-sm: 12px;
+  /* ── gradients ── */
+  --gradient-hero: linear-gradient(135deg, #ede5ff 0%, #dbeafe 50%, #f0e7ff 100%);
+  --gradient-footer: linear-gradient(160deg, #f0e7ff 0%, #dbeafe 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-2));
 
-  font: 17px/1.6 var(--sans);
+  /* ── typography ── */
+  --sans: 'Inter', system-ui, -apple-system, Roboto, sans-serif;
+  --mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* ── spacing & layout ── */
+  --container: 1200px;
+  --section-pad: clamp(80px, 10vw, 140px);
+  --card-pad: clamp(24px, 3vw, 36px);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-xs: 8px;
+
+  /* ── animation ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.7s;
+
+  font: 16px/1.65 var(--sans);
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -31,19 +50,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0912;
-    --bg-alt: #100e1c;
-    --surface: #15122380;
+    --bg: #0c0a1a;
+    --bg-alt: #12101f;
+    --surface: #1a1730e6;
     --surface-border: #2a2540;
     --text: #b7b2c9;
     --text-dim: #8a8499;
     --text-h: #f5f3fb;
-    --accent: #c084fc;
-    --accent-2: #5fd4ff;
-    --accent-bg: rgba(192, 132, 252, 0.1);
-    --accent-border: rgba(192, 132, 252, 0.4);
+    --accent: #a78bfa;
+    --accent-2: #7dd3fc;
+    --accent-bg: rgba(167, 139, 250, 0.10);
+    --accent-border: rgba(167, 139, 250, 0.35);
     --shadow: rgba(0, 0, 0, 0.45) 0 10px 30px -10px, rgba(0, 0, 0, 0.3) 0 2px 8px -2px;
     --shadow-lg: rgba(0, 0, 0, 0.55) 0 30px 60px -20px;
+
+    --gradient-hero: linear-gradient(135deg, #1a1040 0%, #0f1a2e 50%, #1a1040 100%);
+    --gradient-footer: linear-gradient(160deg, #1a1040 0%, #0f1a2e 100%);
   }
 }
 
@@ -108,4 +130,10 @@ img {
 ::selection {
   background: var(--accent-bg);
   color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 15px;
+  }
 }

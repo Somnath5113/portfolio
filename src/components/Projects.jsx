@@ -14,7 +14,7 @@ export default function Projects() {
 
         <div className="case-studies">
           {projects.map((project, i) => (
-            <Reveal as="article" className="case-card" delay={i * 100} key={project.title}>
+            <Reveal as="article" className="case-card" variant="scale-in" delay={i * 100} key={project.title}>
               <span className="case-period">{project.period}</span>
               <h3 className="case-title">{project.title}</h3>
               <p className="case-subtitle">{project.subtitle}</p>

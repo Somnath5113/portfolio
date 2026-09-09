@@ -14,7 +14,7 @@ export default function Experience() {
 
         <div className="chapters">
           {chapters.map((chapter, i) => (
-            <Reveal as="article" className="chapter-card" delay={i * 80} key={chapter.company}>
+            <Reveal as="article" className="chapter-card" variant="fade-up" delay={i * 80} key={chapter.company}>
               <div className="chapter-head">
                 <div>
                   <h3>{chapter.company}</h3>
@@ -23,7 +23,7 @@ export default function Experience() {
                 <span className="chapter-period">{chapter.period}</span>
               </div>
 
-              <p className="chapter-hook">"{chapter.hook}"</p>
+              <p className="chapter-hook">&ldquo;{chapter.hook}&rdquo;</p>
               <p className="chapter-story">{chapter.story}</p>
 
               <div className="chapter-metrics">

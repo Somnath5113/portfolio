@@ -6,9 +6,12 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section contact-section">
-      <div className="hero-glow hero-glow-a" aria-hidden="true" />
+      {/* floating gradient orbs for atmosphere */}
+      <div className="hero-mesh-orb hero-mesh-orb--a" aria-hidden="true" />
+      <div className="hero-mesh-orb hero-mesh-orb--b" aria-hidden="true" />
+
       <div className="container">
-        <Reveal className="contact-card">
+        <Reveal className="contact-card" variant="scale-in">
           <p className="eyebrow">Contact</p>
           <h2 className="section-title">Got something worth building?</h2>
           <p className="section-lede">
