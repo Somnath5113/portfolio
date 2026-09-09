@@ -5,7 +5,6 @@ export const profile = {
   tagline:
     "I turn messy real-world signals — video, speech, text, pricing data — into systems that make decisions on their own. Lately that's meant multi-agent pipelines, RAG that doesn't hallucinate, and computer vision that runs at 30fps in production.",
   email: 'somnathmahata513@gmail.com',
-  resumeUrl: '/resume.pdf',
 }
 
 export const bio = [

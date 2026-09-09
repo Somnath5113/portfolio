@@ -56,9 +56,6 @@ export default function Hero() {
           >
             Begin the story
           </a>
-          <a className="btn btn-ghost" href="/resume.html" target="_blank" rel="noreferrer">
-            Résumé
-          </a>
         </div>
       </div>
 

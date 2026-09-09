@@ -74,10 +74,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a className="btn btn-ghost resume-link" href="/resume.html" target="_blank" rel="noreferrer">
-          Résumé
-        </a>
-
         <button
           className={`nav-toggle ${open ? 'is-open' : ''}`}
           aria-label="Toggle navigation menu"
