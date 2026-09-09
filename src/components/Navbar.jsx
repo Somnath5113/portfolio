@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import OggyGhibli from './OggyGhibli'
+import JerryGhibli from './JerryGhibli'
 
 const LINKS = [
   { id: 'home', label: 'Home' },
@@ -54,7 +55,10 @@ export default function Navbar() {
             handleClick('home')
           }}
         >
-          <OggyGhibli variant="flying" size={34} className="nav-oggy-mini" />
+          <div className="nav-mascots-mini">
+            <JerryGhibli variant="running" size={24} className="nav-jerry-mini" />
+            <OggyGhibli variant="flying" size={32} className="nav-oggy-mini" />
+          </div>
           <span>SM<span className="brand-dot">.</span></span>
         </a>
 

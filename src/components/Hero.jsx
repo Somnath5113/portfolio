@@ -1,6 +1,8 @@
 import { profile } from '../data/resume'
 import OggyGhibli from './OggyGhibli'
 import CockroachesGhibli from './CockroachesGhibli'
+import TomGhibli from './TomGhibli'
+import JerryGhibli from './JerryGhibli'
 
 export default function Hero() {
   return (
@@ -11,22 +13,25 @@ export default function Hero() {
 
       {/* drifting leaves */}
       <div className="hero-leaves" aria-hidden="true">
-        {Array.from({ length: 7 }).map((_, i) => (
+        {Array.from({ length: 9 }).map((_, i) => (
           <span key={i} className="hero-leaf" style={{ '--i': i }} />
         ))}
       </div>
 
       <div className="container hero-content">
-        {/* Studio Ghibli Oggy & Cockroaches Mascot Display */}
+        {/* Studio Ghibli Full Cartoon Mascot Display (Tom, Jerry, Oggy & Cockroaches) */}
         <div className="hero-ghibli-badge hero-anim" style={{ animationDelay: '0ms' }}>
           <div className="ghibli-mascot-group">
-            <OggyGhibli variant="flying" size={90} className="hero-oggy" />
+            <JerryGhibli variant="running" size={54} className="hero-jerry" />
+            <TomGhibli variant="flying" size={72} className="hero-tom" />
+            <OggyGhibli variant="flying" size={78} className="hero-oggy" />
             <div className="hero-roaches">
-              <CockroachesGhibli character="joey" size={42} />
-              <CockroachesGhibli character="deedee" size={44} />
-              <CockroachesGhibli character="marky" size={42} />
+              <CockroachesGhibli character="joey" size={38} />
+              <CockroachesGhibli character="deedee" size={40} />
+              <CockroachesGhibli character="marky" size={38} />
             </div>
           </div>
+          <span className="badge-text">Studio Ghibli Cartoon World 🍃✨</span>
         </div>
 
         <p className="eyebrow hero-anim" style={{ animationDelay: '100ms' }}>
@@ -73,4 +78,3 @@ export default function Hero() {
     </section>
   )
 }
-

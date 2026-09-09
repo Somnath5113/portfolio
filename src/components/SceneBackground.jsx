@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
 import OggyGhibliHouse from './OggyGhibliHouse'
+import TomAndJerryCottage from './TomAndJerryCottage'
 import { JackLeafPlane, BobBulldog } from './OggyGhibliFriends'
 
 /* Whimsical Oggy Cat-Ear Cloud & Cheese Cloud */
-function OggyCloud({ className, style, variant = 'cat' }) {
+function GhibliCloud({ className, style, variant = 'cat' }) {
   return (
     <svg className={className} style={style} viewBox="0 0 240 100" aria-hidden="true">
       {variant === 'cat' ? (
@@ -25,7 +26,7 @@ function OggyCloud({ className, style, variant = 'cat' }) {
   )
 }
 
-/* Rolling watercolour Ghibli hills with Oggy elements */
+/* Rolling watercolour Ghibli hills with Oggy and Tom & Jerry cottages */
 function Hills() {
   return (
     <div className="scene-hills-wrap">
@@ -38,7 +39,12 @@ function Hills() {
           d="M0 360c260-60 420 30 720 30s520-80 720-20v70H0z" />
       </svg>
 
-      {/* 🏡 Oggy's Studio Ghibli Cottage on the Meadow Hill */}
+      {/* 🐱🐭 Tom & Jerry Ghibli Tree Stump Cottage (Left Meadow) */}
+      <div className="scene-tom-jerry-cottage-container">
+        <TomAndJerryCottage />
+      </div>
+
+      {/* 🏡 Oggy's Studio Ghibli Cottage (Right Meadow) */}
       <div className="scene-oggy-house-container">
         <OggyGhibliHouse />
       </div>
@@ -91,20 +97,20 @@ export default function SceneBackground() {
       </div>
 
       <div className="scene-clouds">
-        <OggyCloud className="scene-cloud scene-cloud--1" variant="cat" />
-        <OggyCloud className="scene-cloud scene-cloud--2" variant="cheese" />
-        <OggyCloud className="scene-cloud scene-cloud--3" variant="cat" />
-        <OggyCloud className="scene-cloud scene-cloud--4" variant="cheese" />
+        <GhibliCloud className="scene-cloud scene-cloud--1" variant="cat" />
+        <GhibliCloud className="scene-cloud scene-cloud--2" variant="cheese" />
+        <GhibliCloud className="scene-cloud scene-cloud--3" variant="cat" />
+        <GhibliCloud className="scene-cloud scene-cloud--4" variant="cheese" />
       </div>
 
       <Hills />
 
-      {/* Drifting Soot Sprites with tiny Cockroach Antennae */}
+      {/* Drifting Soot Sprites */}
       <div className="scene-sprites">
-        {Array.from({ length: 16 }).map((_, i) => (
+        {Array.from({ length: 18 }).map((_, i) => (
           <span key={i} className="soot" style={{
-            left: `${(i * 6.5 + 3) % 100}%`,
-            animationDelay: `${(i * 1.5) % 12}s`,
+            left: `${(i * 5.8 + 2) % 100}%`,
+            animationDelay: `${(i * 1.4) % 12}s`,
             animationDuration: `${12 + (i % 5) * 4}s`,
             transform: `scale(${0.5 + (i % 4) * 0.22})`,
           }} />
@@ -113,4 +119,3 @@ export default function SceneBackground() {
     </div>
   )
 }
-
